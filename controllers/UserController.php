@@ -2,7 +2,7 @@
 require_once '../models/UserModel.php';
 
 class UserController {   
-    private $apiUrl = 'https://jsonplaceholder.typicode.com/users';
+    private $apiUrl = 'https://jsonplaceholder.typicode.com/todos';
 
     // Método para manejar solicitudes y devolver datos JSON
     public function getUsers() {

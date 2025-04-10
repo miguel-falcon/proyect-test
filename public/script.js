@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+function cargarDatos(){
     // Function to fetch and display users
     const fetchAndDisplayUsers = async () => {
         const userList = document.getElementById('userList');
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Iterate over the users and add them to the list
             users.forEach(user => {
                 const li = document.createElement('li');
-                li.textContent = `${user.id} - ${user.name} - ${user.username}`;
+                li.textContent = `${user.id} - ${user.userId} - ${user.title}`;
                 userList.appendChild(li);
             });
         } catch (error) {
@@ -38,4 +38,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Call the function to fetch and display users
     fetchAndDisplayUsers();
-});
+}
