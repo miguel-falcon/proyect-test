@@ -1,7 +1,7 @@
-function cargarDatos(){
-    // Function to fetch and display users
+function cargarDatos() {
     const fetchAndDisplayUsers = async () => {
         const userList = document.getElementById('userList');
+        const userIdValue = document.getElementById('userId').value;
 
         // Check if the userList element exists
         if (!userList) {
@@ -24,14 +24,26 @@ function cargarDatos(){
             // Clear the list before appending new items
             userList.innerHTML = '';
 
-            // Iterate over the users and add them to the list
-            users.forEach(user => {
+            // Filter users based on the userIdValue
+            const filteredUsers = users.filter(user => user.userId == userIdValue);
+
+            // Check if there are any matches
+            if (filteredUsers.length > 0) {
+                // Iterate over the filtered users and add them to the list
+                filteredUsers.forEach(user => {
+                    const li = document.createElement('li');
+                    li.textContent = `${user.id} - ${user.userId} - ${user.title}`;
+                    li.className = 'list-group-item'; // Optional: Add Bootstrap styling
+                    userList.appendChild(li);
+                });
+            } else {
+                // Show a message if no matches are found
                 const li = document.createElement('li');
-                li.textContent = `${user.id} - ${user.userId} - ${user.title}`;
+                li.textContent = 'No hay coincidencias';
+                li.className = 'list-group-item text-danger'; // Optional: Add Bootstrap styling
                 userList.appendChild(li);
-            });
+            }
         } catch (error) {
-            // Log any errors to the console
             console.error('Error fetching users:', error);
         }
     };
